@@ -4,7 +4,8 @@ from langchain_core.documents import Document #gonna create documents and pass t
 import os
 import pandas as pd #library to easily read csv files
 
-df = pd.read_csv("realistic_target_reviews.csv") #Reading the csv file
+CSV_PATH = os.environ.get("REVIEWS_CSV", "data/sample_reviews.csv")
+df = pd.read_csv(CSV_PATH)
 embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
 db_location = "./chroma_langchain_db" #folder to store database
